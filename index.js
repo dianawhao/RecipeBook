@@ -72,6 +72,12 @@ app.get('/recipes/:id/delete', async function(req, res){
     res.redirect('/recipes');
 });
 
+// GET - Fetch all reviews
+app.get('/api/recipes', async (req, res) => {
+    const [rows] = await pool.query('SELECT * FROM recipes');
+    res.json(rows);
+});
+
 // start server
 app.listen(8080, function(){
     console.log("Express server has started");
